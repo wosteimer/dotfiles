@@ -1,0 +1,48 @@
+// -*- mode: jsonc -*-
+{
+    "output":  "DP-3",
+    "height": 24, 
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window",
+    ],
+    "modules-right": [
+        "tray",
+        "wireplumber",
+        "clock",
+        "custom/power"
+    ],
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": false,
+         "warp-on-scroll": false,
+         "persistent-workspaces": {
+            "DP-3": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+         }, 
+     },
+    "hyprland/window": {
+        "max-length": 56,
+        "icon": true,
+        "icon-size": 16,
+    },
+        "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "wireplumber": {
+        "tooltip": false,
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "on-click": "helvum",
+        "format-icons": ["", "", ""]
+    },
+    "clock": {
+        "tooltip": false,
+        "format": "{:L%d de %B de %Y  %H:%M}"
+    },
+       "custom/power": {
+        "format" : "⏻",
+		"tooltip": false,
+        "on-click": "$HOME/scripts/power.sh"
+    }
+}
