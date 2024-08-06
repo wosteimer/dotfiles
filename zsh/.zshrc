@@ -12,7 +12,7 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-bindkey -v
+bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 fpath=(~/.zsh $fpath)
@@ -42,7 +42,7 @@ zstyle ':completion:*' menu no
 
 # Aliases
 alias ls='ls --color'
-alias vim='nvim'
+alias -g vim='nvim'
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
