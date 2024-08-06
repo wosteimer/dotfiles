@@ -1,14 +1,15 @@
 // -*- mode: jsonc -*-
 {
     "output":  "DP-3",
-    "height": 24, 
+    "height": 26, 
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window",
     ],
     "modules-right": [
         "tray",
-        "wireplumber",
+        "custom/speaker",
+        "custom/microphone",
         "clock",
         "custom/power"
     ],
@@ -25,22 +26,31 @@
         "icon": true,
         "icon-size": 16,
     },
-        "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+    "tray": {
+        "icon-size": 16,
+        "spacing": 14
     },
-    "wireplumber": {
-        "tooltip": false,
-        "format": "{icon}  {volume}%",
-        "format-muted": "",
-        "on-click": "helvum",
-        "format-icons": ["", "", ""]
+    "custom/speaker": {
+		"tooltip": false,
+        "return-type": "json",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume -l 0 @DEFAULT_SINK@ 5%-",
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "exec": "$HOME/scripts/volume.sh @DEFAULT_SINK@ 🔈 🔉 🔊 🙊",
+    },
+    "custom/microphone": {
+		"tooltip": false,
+        "return-type": "json",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume -l 0 @DEFAULT_SOURCE@ 5%-",
+        "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+        "exec": "$HOME/scripts/volume.sh @DEFAULT_SOURCE@ 🎙️ 🎙️ 🎙️ 🙊",
     },
     "clock": {
         "tooltip": false,
-        "format": "{:L%d de %B de %Y  %H:%M}"
+        "format": "{:L%d de %B de %Y  %H:%M}",
     },
-       "custom/power": {
+    "custom/power": {
         "format" : "⏻",
 		"tooltip": false,
         "on-click": "$HOME/scripts/power.sh"

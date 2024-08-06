@@ -17,7 +17,7 @@ function main(){
         --hb "#89b4fa" \
         --hp 12 \
         -i \
-        -H 24 \
+        -H 26 \
         -C \
         $@
 }
