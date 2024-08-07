@@ -11,7 +11,8 @@
         "custom/speaker",
         "custom/microphone",
         "clock",
-        "custom/power"
+        "custom/colors",
+        "custom/power",
     ],
     "hyprland/workspaces": {
          "disable-scroll": true,
@@ -24,11 +25,11 @@
     "hyprland/window": {
         "max-length": 56,
         "icon": true,
-        "icon-size": 16,
+        "icon-size": 14,
     },
     "tray": {
-        "icon-size": 16,
-        "spacing": 14
+        "icon-size": 14,
+        "spacing": 18
     },
     "custom/speaker": {
 		"tooltip": false,
@@ -36,7 +37,8 @@
         "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+",
         "on-scroll-down": "wpctl set-volume -l 0 @DEFAULT_SINK@ 5%-",
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-        "exec": "$HOME/scripts/volume.sh @DEFAULT_SINK@ 🔈 🔉 🔊 🙊",
+        "exec": "$HOME/scripts/volume.sh @DEFAULT_SINK@ 󰕿 󰖀 󰕾 󰖁",
+        "signal": 1,
     },
     "custom/microphone": {
 		"tooltip": false,
@@ -44,14 +46,21 @@
         "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SOURCE@ 5%+",
         "on-scroll-down": "wpctl set-volume -l 0 @DEFAULT_SOURCE@ 5%-",
         "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-        "exec": "$HOME/scripts/volume.sh @DEFAULT_SOURCE@ 🎙️ 🎙️ 🎙️ 🙊",
+        "exec": "$HOME/scripts/volume.sh @DEFAULT_SOURCE@ 󰍬 󰍬 󰍬 󰍭",
+        "signal": 1,
     },
     "clock": {
         "tooltip": false,
         "format": "{:L%d de %B de %Y  %H:%M}",
     },
+    "custom/colors": {
+		"tooltip": false,
+        "exec": "$HOME/scripts/colors_icon.sh 󰖔 ",
+        "signal": 1,
+        "on-click": "$HOME/scripts/colors.sh"
+    },
     "custom/power": {
-        "format" : "⏻",
+        "format" : "󰤆",
 		"tooltip": false,
         "on-click": "$HOME/scripts/power.sh"
     }
