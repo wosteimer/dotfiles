@@ -1,5 +1,4 @@
-vim.g.python3_host_prog = "$HOME/.pyenv/versions/py3nvim/bin/python"
-
+vim.g.python3_host_prog = "$HOME/.config/nvim/.venv/bin/python"
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.guicursor = ""
@@ -33,3 +32,6 @@ vim.opt.showmode = false
 
 vim.opt.spell = false
 vim.opt.spelllang = { "pt_br", "en_us" }
+
+vim.opt.mouse = ""
+vim.opt.mousescroll = "ver:0,hor:0"

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 function main(){
-    OPTIONS="Desligar\nReiniciar\nSuspender\nEncerrar Sessão"
+    OPTIONS="Desligar\nReiniciar\nSuspender\nBloquear Sessão\nEncerrar Sessão"
     SELECT=$(echo -e $OPTIONS | ~/scripts/dmenu.sh -p "Escolha:")
     case $SELECT in
         "Desligar")
@@ -13,8 +13,11 @@ function main(){
         "Suspender")
             systemctl suspend
             ;;
+        "Bloquear Sessão")
+            hyprlock
+            ;;
         "Encerrar Sessão")
-            hyprctl dispatch exit 0
+            sway exit
             sleep 1
             loginctl terminate-session $XDG_SESSION_ID
         ;;

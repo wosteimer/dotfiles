@@ -15,6 +15,7 @@ return {
 				},
 				lua = { "stylua" },
 				javascript = { "prettier" },
+				markdown = { "prettier" },
 			},
 		})
 		vim.keymap.set("n", "<leader>f", conform.format)

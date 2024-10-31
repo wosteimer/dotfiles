@@ -1,6 +1,13 @@
 return {
 	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- FIX:  test highlight
+	-- TODO: test highlight
+	-- HACK: test highlight
+	-- WARN: test highlight
+	-- PERF: test highlight
+	-- NOTE: test highlight
+	-- TEST: test highlight
 	opts = {
 		signs = true, -- show icons in the signs column
 		sign_priority = 8, -- sign priority
@@ -20,7 +27,7 @@ return {
 			TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 		},
 		gui_style = {
-			fg = "NONE", -- The gui style to use for the fg highlight group.
+			fg = "BOLD", -- The gui style to use for the fg highlight group.
 			bg = "BOLD", -- The gui style to use for the bg highlight group.
 		},
 		merge_keywords = true, -- when true, custom keywords will be merged with the defaults
@@ -33,8 +40,8 @@ return {
 			multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
 			multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
 			before = "", -- "fg" or "bg" or empty
-			keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
-			after = "fg", -- "fg" or "bg" or empty
+			keyword = "wide_fg", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
+			after = "", -- "fg" or "bg" or empty
 			pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
 			comments_only = true, -- uses treesitter to match keywords in comments only
 			max_line_len = 400, -- ignore lines longer than this

@@ -3,8 +3,9 @@
     "output":  "DP-3",
     "height": 26, 
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window",
+        "sway/workspaces",
+        "sway/mode",
+        "sway/window",
     ],
     "modules-right": [
         "tray",
@@ -14,15 +15,15 @@
         "custom/colors",
         "custom/power",
     ],
-    "hyprland/workspaces": {
+    "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": false,
          "warp-on-scroll": false,
          "persistent-workspaces": {
-            "DP-3": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": [], "8": [], "9": [],
          }, 
      },
-    "hyprland/window": {
+    "sway/window": {
         "max-length": 56,
         "icon": true,
         "icon-size": 14,
@@ -38,6 +39,7 @@
         "on-scroll-down": "wpctl set-volume -l 0 @DEFAULT_SINK@ 5%-",
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
         "exec": "$HOME/scripts/volume.sh @DEFAULT_SINK@ 󰕿 󰖀 󰕾 󰖁",
+        "interval": 1,
         "signal": 1,
     },
     "custom/microphone": {
@@ -47,16 +49,18 @@
         "on-scroll-down": "wpctl set-volume -l 0 @DEFAULT_SOURCE@ 5%-",
         "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
         "exec": "$HOME/scripts/volume.sh @DEFAULT_SOURCE@ 󰍬 󰍬 󰍬 󰍭",
+        "interval": 1,
         "signal": 1,
     },
     "clock": {
         "tooltip": false,
-        "format": "{:L%d de %B de %Y  %H:%M}",
+        "format": "{:L%a. %d de %b.  %H:%M}",
     },
     "custom/colors": {
 		"tooltip": false,
         "exec": "$HOME/scripts/colors_icon.sh 󰖔 ",
         "signal": 1,
+        "interval": 1,
         "on-click": "$HOME/scripts/colors.sh"
     },
     "custom/power": {

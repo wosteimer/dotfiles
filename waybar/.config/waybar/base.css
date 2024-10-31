@@ -33,10 +33,16 @@ button:hover {
 }
 
 #workspaces button:hover {
-    background: @crust;
+    background-color: @crust;
 }
 
 #workspaces button.active {
+    font-weight: bold;
+    background-color: @blue;
+    color: @base;
+}
+
+#workspaces button.focused {
     font-weight: bold;
     background-color: @blue;
     color: @base;
@@ -46,10 +52,16 @@ button:hover {
     background-color: @red;
 }
 
+#mode {
+    font-family: Fira Code, monospace;
+    color: @peach
+}
+
 #window {
     font-family: Fira Code, monospace;
     padding: 0 0 0 16px;
 }
+
 
 #clock,
 #custom-media,
