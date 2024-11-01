@@ -14,7 +14,7 @@ function main(){
             systemctl suspend
             ;;
         "Bloquear Sessão")
-            hyprlock
+            loginctl lock-session
             ;;
         "Encerrar Sessão")
             sway exit
