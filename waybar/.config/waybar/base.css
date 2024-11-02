@@ -14,8 +14,8 @@ window#waybar {
 
 button {
     min-width: 22px;
-    font-family: Fira Code, monospace;
-    font-weight: normal;
+    font-family: JetBrains Mono, monospace;
+    font-weight: 300;
     /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
@@ -29,6 +29,7 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
+    font-weight: 300;
     color: @text;
 }
 
@@ -37,13 +38,13 @@ button:hover {
 }
 
 #workspaces button.active {
-    font-weight: bold;
+    font-weight: 800;
     background-color: @blue;
     color: @base;
 }
 
 #workspaces button.focused {
-    font-weight: bold;
+    font-weight: 800;
     background-color: @blue;
     color: @base;
 }
@@ -53,12 +54,14 @@ button:hover {
 }
 
 #mode {
-    font-family: Fira Code, monospace;
+    font-family: JetBrains Mono, monospace;
+    font-weight: 800;
     color: @peach
 }
 
 #window {
-    font-family: Fira Code, monospace;
+    font-family: JetBrains Mono, monospace;
+    font-weight: 300;
     padding: 0 0 0 16px;
 }
 
@@ -70,7 +73,8 @@ button:hover {
 #custom-speaker,
 #custom-colors,
 #custom-microphone {
-    font-family: Fira Code, monospace;
+    font-family: JetBrains Mono, monospace;
+    font-weight: 300;
     padding: 0 24px 0 0;
     color: @text;
 }

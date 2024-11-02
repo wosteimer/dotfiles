@@ -4,7 +4,7 @@ function main(){
      cat - | bemenu \
         --ch 16\
         --cw 1 \
-        --fn "Fira Code 11" \
+        --fn "JetBrains Mono 12" \
         --fb "#1e1e2e" \
         --ff "#cdd6f4" \
         --nb "#1e1e2e" \

@@ -8,8 +8,8 @@ client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
-gaps inner 6
-gaps outer 8
+gaps inner 4
+gaps outer 2
 
 default_border pixel 2
 
@@ -100,6 +100,7 @@ workspace 10 output HDMI-A-1
 input * {
     xkb_layout "br"
     xkb_variant "abnt2"
+    xkb_options caps:escape 
 }
 
 ### Key bindings
@@ -252,7 +253,7 @@ bindsym $mod+r mode "resize"
     # bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     bindsym Print exec ~/scripts/print.sh 
-
+    bindsym $mod+p exec $clipboard
 #
 # Status Bar:
 #

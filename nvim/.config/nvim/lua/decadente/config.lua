@@ -35,3 +35,5 @@ vim.opt.spelllang = { "pt_br", "en_us" }
 
 vim.opt.mouse = ""
 vim.opt.mousescroll = "ver:0,hor:0"
+
+vim.opt.swapfile = false
