@@ -4,7 +4,7 @@
 
 
 window#waybar {
-    background-color: @base;
+    background-color: @crust;
     color: @text;
 }
 
@@ -46,7 +46,7 @@ button:hover {
 #workspaces button.focused {
     font-weight: 800;
     color: @blue;
-    background-color: @crust;
+    background-color: @base;
     /*color: @base;*/
 }
 
