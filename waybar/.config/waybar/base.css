@@ -1,71 +1,75 @@
 * {
-    font-size: 14px;
+  font-size: 14px;
 }
 
-
 window#waybar {
-    background-color: @crust;
-    color: @text;
+  background-color: @crust;
+  color: @text;
 }
 
 #tray menu {
-    font-family: Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 button {
-    min-width: 22px;
-    font-family: JetBrains Mono, monospace;
-    font-weight: 300;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+  min-width: 22px;
+  font-family:
+    JetBrains Mono,
+    monospace;
+  font-weight: 300;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
+  background: inherit;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    font-weight: 400;
-    color: @text;
+  padding: 0 5px;
+  background-color: transparent;
+  font-weight: 400;
+  color: @text;
 }
 
 #workspaces button:hover {
-    background-color: @crust;
+  background-color: @base;
 }
 
 #workspaces button.active {
-    font-weight: 800;
-    background-color: @blue;
-    color: @base;
+  font-weight: 800;
+  color: @blue;
+  background-color: @base;
 }
 
 #workspaces button.focused {
-    font-weight: 800;
-    color: @blue;
-    background-color: @base;
-    /*color: @base;*/
+  font-weight: 800;
+  color: @blue;
+  background-color: @base;
+  /*color: @base;*/
 }
 
 #workspaces button.urgent {
-    background-color: @red;
+  background-color: @red;
 }
 
 #mode {
-    font-family: JetBrains Mono, monospace;
-    font-weight: 800;
-    color: @peach
+  font-family:
+    JetBrains Mono,
+    monospace;
+  font-weight: 800;
+  color: @peach;
 }
 
 #window {
-    font-family: JetBrains Mono, monospace;
-    font-weight: 300;
-    padding: 0 0 0 16px;
+  font-family:
+    JetBrains Mono,
+    monospace;
+  font-weight: 300;
+  padding: 0 0 0 16px;
 }
-
 
 #clock,
 #custom-media,
@@ -74,13 +78,15 @@ button:hover {
 #custom-speaker,
 #custom-colors,
 #custom-microphone {
-    font-family: JetBrains Mono, monospace;
-    font-weight: 300;
-    padding: 0 24px 0 0;
-    color: @text;
+  font-family:
+    JetBrains Mono,
+    monospace;
+  font-weight: 300;
+  padding: 0 24px 0 0;
+  color: @text;
 }
 
 #custom-speaker.muted,
 #custom-microphone.muted {
-    opacity: 0.4;
+  opacity: 0.4;
 }
