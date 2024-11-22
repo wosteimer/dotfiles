@@ -24,14 +24,15 @@ exec gammastep-indicator
 exec cliphist wipe
 exec wl-paste --watch cliphist store
 exec xrandr --output DP-3 --primary
-exec swayidle -w \
-         timeout 300 'loginctl lock-session' \
-         timeout 330 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         timeout 1800 'systemctl suspend' \
-         before-sleep 'loginctl lock-session' \
-         after-resume 'swaymsg "output * power on"' \
-         lock 'pidof swaylock || swaylock -f'
-
+exec hypridle
+# exec swayidle -w \
+#          timeout 300 'loginctl lock-session' \
+#          timeout 330 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          timeout 1800 'systemctl suspend' \
+#          before-sleep 'loginctl lock-session' \
+#          after-resume 'swaymsg "output * power on"' \
+#          lock 'pidof swaylock || swaylock -f'
+# 
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -50,8 +51,11 @@ set $clipboard cliphist list | ~/scripts/dmenu.sh --prompt Escolha:  | cliphist 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output DP-3 bg ~/Imagens/wallpapers/city_pixel_first.jpg fill
-output HDMI-A-1 bg ~/Imagens/wallpapers/city_pixel_second.jpg fill
+output DP-3 mode 2560x1080@75Hz \
+            adaptive_sync on \
+            bg ~/Imagens/wallpapers/city_pixel_first.jpg fill
+output HDMI-A-1 mode 1920x1080@60Hz \
+                bg ~/Imagens/wallpapers/city_pixel_second.jpg fill
 
 workspace 1 output DP-3
 workspace 2 output DP-3
