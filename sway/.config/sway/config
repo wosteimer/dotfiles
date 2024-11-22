@@ -280,4 +280,6 @@ bar {
   workspace_buttons yes
 }
 
+for_window [app_id="org.gnome.Calculator"] floating enable
+
 include /etc/sway/config.d/*
