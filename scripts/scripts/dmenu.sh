@@ -1,20 +1,31 @@
 #!/bin/sh
 
 function main(){
-     cat - | bemenu \
+    blue=#1E66F5
+    text=#4C4F69
+    base=#EFF1F5
+    crust=#DCE0E8
+    current=$(gsettings get org.gnome.desktop.interface color-scheme)
+    if [[ $current = "'prefer-dark'" ]]; then 
+        blue=#89B4FA
+        text=#CDD6F4
+        base=#1E1E2E
+        crust=#11111B
+    fi 
+    cat - | bemenu \
         --ch 16\
         --cw 1 \
         --fn "JetBrains Mono 12" \
-        --fb "#1e1e2e" \
-        --ff "#cdd6f4" \
-        --nb "#1e1e2e" \
-        --nf "#cdd6f4" \
-        --af "#cdd6f4" \
-        --ab "#1e1e2e" \
-        --tb "#1e1e2e" \
-        --tf "#89b4fa" \
-        --hf "#1e1e2e" \
-        --hb "#89b4fa" \
+        --fb $crust \
+        --ff $text \
+        --nb $crust \
+        --nf $text \
+        --af $text \
+        --ab $crust \
+        --tb $crust \
+        --tf $blue \
+        --hf $blue \
+        --hb $base \
         --hp 12 \
         -i \
         -H 26 \
