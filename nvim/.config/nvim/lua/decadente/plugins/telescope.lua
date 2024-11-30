@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.6",
+	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
@@ -9,6 +9,75 @@ return {
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release &&\
                      cmake --build build --config Release &&\
                      cmake --install build --prefix build",
+		},
+	},
+	cmd = { "Telescope" },
+	keys = {
+		{
+			"<leader>ff",
+			function()
+				require("telescope.builtin").find_files()
+			end,
+			mode = "",
+			desc = "[F]ind [F]iles",
+		},
+		{
+			"<leader>fg",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+			mode = "n",
+			desc = "[F]ind [G]rep",
+		},
+		{
+			"<leader>fb",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+			mode = "n",
+			desc = "[F]ind [B]uffers",
+		},
+		{
+			"<leader>fh",
+			function()
+				require("telescope.builtin").help_tags()
+			end,
+			mode = "n",
+			desc = "[F]ind [H]elp",
+		},
+		{
+			"<leader>fd",
+			function()
+				require("telescope.builtin").diagnostics()
+			end,
+			mode = "n",
+			desc = "[F]ind [D]iagnostics",
+		},
+		{
+			"<leader>fs",
+			function()
+				require("telescope.builtin").spell_suggest()
+			end,
+			mode = "n",
+			desc = "[F]ind [S]pell suggest",
+		},
+		{
+			"<leader>fw",
+			function()
+				local word = vim.fn.expand("<cword>")
+				require("telescope.builtin").grep_string({ search = word })
+			end,
+			mode = "n",
+			desc = "[F]ind [W]ord",
+		},
+		{
+			"<leader>fW",
+			function()
+				local word = vim.fn.expand("<cWORD>")
+				require("telescope.builtin").grep_string({ search = word })
+			end,
+			mode = "n",
+			desc = "[F]ind [W]ORDS",
 		},
 	},
 	config = function()
@@ -23,19 +92,5 @@ return {
 		})
 		telescope.load_extension("ui-select")
 		telescope.load_extension("fzf")
-
-		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-		vim.keymap.set("n", "<leader>fw", function()
-			local word = vim.fn.expand("<cword>")
-			builtin.grep_string({ search = word })
-		end)
-		vim.keymap.set("n", "<leader>fW", function()
-			local word = vim.fn.expand("<cWORD>")
-			builtin.grep_string({ search = word })
-		end)
 	end,
 }

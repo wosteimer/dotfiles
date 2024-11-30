@@ -2,39 +2,66 @@ return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
-	config = function()
-		local harpoon = require("harpoon")
+	opts = {},
+	keys = {
+		{
+			"<leader>a",
+			function()
+				require("harpoon"):list():add()
+			end,
+			mode = "n",
+		},
+		{
+			"<leader>e",
+			function()
+				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+			end,
+			mode = "n",
+		},
 
-		-- REQUIRED
-		harpoon:setup()
-		-- REQUIRED
+		{
+			"<leader>1",
+			function()
+				require("harpoon"):list():select(1)
+			end,
+			mode = "n",
+		},
+		{
+			"<leader>2",
+			function()
+				require("harpoon"):list():select(2)
+			end,
+			mode = "n",
+		},
+		{
+			"<leader>3",
+			function()
+				require("harpoon"):list():select(3)
+			end,
+			mode = "n",
+		},
+		{
+			"<leader>4",
+			function()
+				require("harpoon"):list():select(4)
+			end,
+			mode = "n",
+		},
 
-		vim.keymap.set("n", "<leader>a", function()
-			harpoon:list():add()
-		end)
-		vim.keymap.set("n", "<leader>e", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end)
-
-		vim.keymap.set("n", "<leader>1", function()
-			harpoon:list():select(1)
-		end)
-		vim.keymap.set("n", "<leader>2", function()
-			harpoon:list():select(2)
-		end)
-		vim.keymap.set("n", "<leader>3", function()
-			harpoon:list():select(3)
-		end)
-		vim.keymap.set("n", "<leader>4", function()
-			harpoon:list():select(4)
-		end)
-
-		-- Toggle previous & next buffers stored within Harpoon list
-		vim.keymap.set("n", "H", function()
-			harpoon:list():prev({ ui_nav_wrap = true })
-		end)
-		vim.keymap.set("n", "L", function()
-			harpoon:list():next({ ui_nav_wrap = true })
-		end)
-	end,
+		-- Toggle previous & next buffers stored within require("Harpoon") list
+		{
+			"[h",
+			function()
+				require("harpoon"):list():prev({ ui_nav_wrap = true })
+			end,
+			mode = "n",
+		},
+		{
+			"]h",
+			function()
+				require("harpoon"):list():next({ ui_nav_wrap = true })
+			end,
+			mode = "n",
+		},
+	},
 }

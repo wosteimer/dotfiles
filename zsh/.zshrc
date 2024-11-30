@@ -1,5 +1,6 @@
 export PATH=$PATH:/home/william/.local/bin
-# Lines configured by zsh-newuser-install
+export EDITOR=nvim
+
 HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=5000
@@ -13,14 +14,15 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
+source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+[[ -n ${key[Home]} ]] && bindkey "${key[Home]}"  beginning-of-line
+[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line 
+[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char 
+
 fpath=(~/.zsh $fpath)
 zstyle :compinstall filename '/home/william/.zshrc'
-
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"

@@ -1,5 +1,6 @@
 return {
 	"folke/todo-comments.nvim",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "nvim-lua/plenary.nvim" },
 	-- FIX:  test highlight
 	-- TODO: test highlight

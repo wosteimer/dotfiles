@@ -3,42 +3,21 @@ return {
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = function()
 		local colors = require("catppuccin.palettes").get_palette("mocha")
+		local function make_theme(color)
+			return {
+				a = { bg = colors.mantle, fg = color, gui = "bold" },
+				b = { bg = colors.mantle, fg = color },
+				c = { bg = colors.mantle, fg = colors.text },
+				y = { bg = colors.mantle, fg = colors.subtext0 },
+				z = { bg = colors.mantle, fg = colors.subtext0 },
+			}
+		end
 		local theme = {
-			normal = {
-				a = { bg = colors.mantle, fg = colors.blue, gui = "bold" },
-				b = { bg = colors.mantle, fg = colors.blue },
-				c = { bg = colors.mantle, fg = colors.text },
-				y = { bg = colors.mantle, fg = colors.subtext0 },
-				z = { bg = colors.mantle, fg = colors.subtext0 },
-			},
-			insert = {
-				a = { bg = colors.mantle, fg = colors.green, gui = "bold" },
-				b = { bg = colors.mantle, fg = colors.green },
-				c = { bg = colors.mantle, fg = colors.text },
-				y = { bg = colors.mantle, fg = colors.subtext0 },
-				z = { bg = colors.mantle, fg = colors.subtext0 },
-			},
-			visual = {
-				a = { bg = colors.mantle, fg = colors.mauve, gui = "bold" },
-				b = { bg = colors.mantle, fg = colors.mauve },
-				c = { bg = colors.mantle, fg = colors.text },
-				y = { bg = colors.mantle, fg = colors.subtext0 },
-				z = { bg = colors.mantle, fg = colors.subtext0 },
-			},
-			replace = {
-				a = { bg = colors.mantle, fg = colors.red, gui = "bold" },
-				b = { bg = colors.mantle, fg = colors.red },
-				c = { bg = colors.mantle, fg = colors.text },
-				y = { bg = colors.mantle, fg = colors.subtext0 },
-				z = { bg = colors.mantle, fg = colors.subtext0 },
-			},
-			command = {
-				a = { bg = colors.mantle, fg = colors.peach, gui = "bold" },
-				b = { bg = colors.mantle, fg = colors.peach },
-				c = { bg = colors.mantle, fg = colors.text },
-				y = { bg = colors.mantle, fg = colors.subtext0 },
-				z = { bg = colors.mantle, fg = colors.subtext0 },
-			},
+			normal = make_theme(colors.blue),
+			insert = make_theme(colors.green),
+			visual = make_theme(colors.mauve),
+			replace = make_theme(colors.red),
+			command = make_theme(colors.peach),
 			inactive = {
 				a = { bg = colors.mantle, fg = colors.overlay2, gui = "bold" },
 				b = { bg = colors.mantle, fg = colors.overlay2 },
