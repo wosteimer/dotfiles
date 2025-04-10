@@ -2,8 +2,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("", " ", "<nop>")
 
+vim.keymap.set("i", "<C-u>", "<nop>")
+
 -- paste without replacing the content in the clipboard
-vim.keymap.set("v", "<leader>p", '"_dP', { desc = "past without replacing the content in the clipboard" })
+vim.keymap.set("v", "<leader>p", '"_dP', { desc = "[P]aste" })
 
 -- auto center cursor in screen when use ctrl+u/d to scroll
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -28,15 +30,15 @@ vim.keymap.set("i", "<left>", "<nop>", { noremap = true })
 vim.keymap.set("i", "<right>", "<nop>", { noremap = true })
 
 -- Toggle file manager
-vim.keymap.set("n", "<leader>d", function()
-	if vim.bo.filetype ~= "netrw" then
-		vim.cmd("Ex")
-		return
-	end
-	while vim.bo.filetype == "netrw" do
-		vim.cmd("bd!")
-	end
-end, { desc = "toggle netrw" })
+-- vim.keymap.set("n", "<leader>d", function()
+-- 	if vim.bo.filetype ~= "netrw" then
+-- 		vim.cmd("Ex")
+-- 		return
+-- 	end
+-- 	while vim.bo.filetype == "netrw" do
+-- 		vim.cmd("bd!")
+-- 	end
+-- end, { desc = "toggle netrw" })
 
 -- Toggle spell checking
 vim.keymap.set("n", "<F3>", function()

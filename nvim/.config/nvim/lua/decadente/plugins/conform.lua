@@ -4,12 +4,12 @@ return {
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>f",
+			"<leader>bf",
 			function()
 				require("conform").format({ async = true, lsp_format = "fallback" })
 			end,
 			mode = "",
-			desc = "[F]ormat buffer",
+			desc = "[F]ormat",
 		},
 	},
 	opts = {
@@ -18,11 +18,13 @@ return {
 			lsp_fallback = true,
 		},
 		formatters_by_ft = {
+			zig = { "zigfmt" },
 			python = {
 				"ruff_fix",
 				"ruff_organize_imports",
 				"ruff_format",
 			},
+			go = { "goimports", "gofmt" },
 			lua = { "stylua" },
 			javascript = { "prettier" },
 			markdown = { "prettier" },

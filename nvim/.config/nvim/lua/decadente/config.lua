@@ -1,11 +1,11 @@
 vim.g.python3_host_prog = "$HOME/.config/nvim/.venv/bin/python"
 vim.opt.clipboard = "unnamedplus"
-
 vim.opt.guicursor = ""
+
+vim.opt.colorcolumn = { 84 }
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true

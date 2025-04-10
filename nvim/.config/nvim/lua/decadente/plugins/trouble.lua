@@ -4,24 +4,24 @@ return {
 	cmd = "Trouble",
 	keys = {
 		{
-			"<leader>tt",
+			"<leader>tw",
 			"<cmd>Trouble diagnostics toggle<cr>",
-			desc = "Diagnostics (Trouble)",
+			desc = "[W]orspace Diagnostics",
 		},
 		{
 			"<leader>tb",
 			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-			desc = "Buffer Diagnostics (Trouble)",
+			desc = "[B]uffer Diagnostics",
 		},
 		{
 			"<leader>ts",
 			"<cmd>Trouble symbols toggle focus=false<cr>",
-			desc = "Symbols (Trouble)",
+			desc = "[S]ymbols",
 		},
 		{
 			"<leader>td",
 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-			desc = "LSP Definitions / references / ... (Trouble)",
+			desc = "LSP [D]efinitions / references / ...",
 		},
 	},
 }

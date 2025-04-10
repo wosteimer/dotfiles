@@ -18,8 +18,8 @@ return {
 			function()
 				require("telescope.builtin").find_files()
 			end,
-			mode = "",
-			desc = "[F]ind [F]iles",
+			mode = "n",
+			desc = "[F]iles",
 		},
 		{
 			"<leader>fg",
@@ -27,7 +27,7 @@ return {
 				require("telescope.builtin").live_grep()
 			end,
 			mode = "n",
-			desc = "[F]ind [G]rep",
+			desc = "[G]rep",
 		},
 		{
 			"<leader>fb",
@@ -35,7 +35,7 @@ return {
 				require("telescope.builtin").buffers()
 			end,
 			mode = "n",
-			desc = "[F]ind [B]uffers",
+			desc = "[B]uffers",
 		},
 		{
 			"<leader>fh",
@@ -43,7 +43,7 @@ return {
 				require("telescope.builtin").help_tags()
 			end,
 			mode = "n",
-			desc = "[F]ind [H]elp",
+			desc = "[H]elp",
 		},
 		{
 			"<leader>fd",
@@ -51,7 +51,7 @@ return {
 				require("telescope.builtin").diagnostics()
 			end,
 			mode = "n",
-			desc = "[F]ind [D]iagnostics",
+			desc = "[D]iagnostics",
 		},
 		{
 			"<leader>fs",
@@ -59,7 +59,7 @@ return {
 				require("telescope.builtin").spell_suggest()
 			end,
 			mode = "n",
-			desc = "[F]ind [S]pell suggest",
+			desc = "[S]pell suggest",
 		},
 		{
 			"<leader>fw",
@@ -68,7 +68,7 @@ return {
 				require("telescope.builtin").grep_string({ search = word })
 			end,
 			mode = "n",
-			desc = "[F]ind [W]ord",
+			desc = "[W]ord",
 		},
 		{
 			"<leader>fW",
@@ -77,7 +77,7 @@ return {
 				require("telescope.builtin").grep_string({ search = word })
 			end,
 			mode = "n",
-			desc = "[F]ind [W]ORDS",
+			desc = "[W]ORDS",
 		},
 	},
 	config = function()

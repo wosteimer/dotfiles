@@ -12,6 +12,7 @@ gaps inner 4
 gaps outer 2
 
 default_border pixel 2
+default_floating_border pixel 2
 
 # Default config for sway
 #
@@ -19,6 +20,7 @@ default_border pixel 2
 #
 # Read `man 5 sway` for a complete reference.
 
+exec ~/workspace/zig/tiny-shell/zig-out/bin/ts-launcher --silent
 exec nm-applet
 exec gammastep-indicator
 exec cliphist wipe
@@ -43,19 +45,27 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty 
+set $term ghostty 
 # Your preferred application launcher
-set $menu j4-dmenu-desktop --dmenu="~/scripts/dmenu.sh --prompt Escolha:" --term-mode=kitty --no-generic 
+# set $menu j4-dmenu-desktop --dmenu="~/scripts/dmenu.sh --prompt Escolha:" --term-mode=kitty --no-generic 
+set $menu ~/workspace/zig/tiny-shell/zig-out/bin/ts-launcher
 set $clipboard cliphist list | ~/scripts/dmenu.sh --prompt Escolha:  | cliphist decode | wl-copy
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output HDMI-A-1 mode 2560x1080@75Hz \
+#             pos 0 0 \
+#             adaptive_sync on \
+#             bg ~/Imagens/wallpapers/wallpaper.jpg fill
 output DP-3 mode 2560x1080@75Hz \
+            pos 0 0 \
             adaptive_sync on \
-            bg ~/Imagens/wallpapers/city_pixel_first.jpg fill
-output HDMI-A-1 mode 1920x1080@60Hz \
-                bg ~/Imagens/wallpapers/city_pixel_second.jpg fill
+            bg ~/Imagens/wallpapers/wallpaper.jpg fill
+# output HDMI-A-1 mode 1920x1080@60Hz \
+#             pos 2560 0 \
+#             adaptive_sync on \
+#                 bg ~/Imagens/wallpapers/city_pixel_second.jpg fill
 
 workspace 1 output DP-3
 workspace 2 output DP-3
@@ -66,7 +76,7 @@ workspace 6 output DP-3
 workspace 7 output DP-3
 workspace 8 output DP-3
 workspace 9 output DP-3
-workspace 10 output HDMI-A-1
+# workspace 10 output HDMI-A-1
 
 #
 # Example configuration:
@@ -101,7 +111,7 @@ workspace 10 output HDMI-A-1
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input * {
+input "type:keyboard" {
     xkb_layout "br"
     xkb_variant "abnt2"
     xkb_options caps:escape 
@@ -193,10 +203,11 @@ input * {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
-
+    #bindsym $mod+s layout stacking
+    #bindsym $mod+w layout tabbed
+    #bindsym $mod+e layout toggle split
+    bindsym $mod+t layout toggle split tabbed 
+    bindsym $mod+s layout toggle split
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
@@ -220,30 +231,12 @@ input * {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+bindsym $mod+Control+$left resize shrink width 10px
+bindsym $mod+Control+$down resize grow height 10px
+bindsym $mod+Control+$up resize shrink height 10px
+bindsym $mod+Control+$right resize grow width 10px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
 #
 # Utilities:
 #
@@ -279,9 +272,11 @@ bar {
   swaybar_command waybar
   workspace_buttons yes
 }
-
+for_window [app_id=".*"] inhibit_idle fullscreen
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="it.mijorus.smile"] floating enable
+for_window [app_id="com.saivert.pwvucontrol"] floating enable
 
-
+exec systemctl --user unset-environment SWAYSOCK DISPLAY I3SOCK WAYLAND_DISPLAY
 include /etc/sway/config.d/*
+

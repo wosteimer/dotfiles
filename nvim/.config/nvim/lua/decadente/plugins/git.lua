@@ -20,7 +20,7 @@ return {
 					require("gitsigns").preview_hunk()
 				end,
 				mode = "n",
-				desc = "[G]it [P]review hunk",
+				desc = "[P]review hunk",
 			},
 			{
 				"<leader>gt",
@@ -28,19 +28,8 @@ return {
 					require("gitsigns").toggle_current_line_blame()
 				end,
 				mode = "n",
-				desc = "[G]it [T]oggle current line blame",
+				desc = "[T]oggle current line blame",
 			},
 		},
-		config = function()
-			local gitsigns = require("gitsigns")
-			gitsigns.setup()
-			vim.keymap.set("n", "<leader>gp", gitsigns.preview_hunk, { desc = "[G]it [P]review hunk" })
-			vim.keymap.set(
-				"n",
-				"<leader>gt",
-				gitsigns.toggle_current_line_blame,
-				{ desc = "[G]it [T]oggle current line blame" }
-			)
-		end,
 	},
 }

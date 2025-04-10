@@ -3,7 +3,8 @@ return {
 	dependencies = {
 		{ "williamboman/mason.nvim", cmd = { "Mason" }, opts = {} },
 		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
+		"saghen/blink.cmp",
+		--"hrsh7th/cmp-nvim-lsp",
 	},
 	cmd = {
 		"LspLog",
@@ -17,8 +18,12 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 		local servers = {
+			zls = {
+				cmd = { "/home/william/zls" },
+				settings = { preferAstCheckAsChildProcess = false },
+			},
 			pyright = {
 				settings = {
 					pyright = {
@@ -69,14 +74,13 @@ return {
 					vim.keymap.set("n", bind, fn, { buffer = event.buf, desc = desc })
 				end
 				local builtins = require("telescope.builtin")
-				map("gd", builtins.lsp_definitions, "[G]o to [D]efinitions")
-				map("gr", builtins.lsp_references, "[G]o to [R]eferences")
+				map("<leader>lgd", builtins.lsp_definitions, "[D]efinitions")
+				map("<leader>lgr", builtins.lsp_references, "[R]eferences")
 				map("K", vim.lsp.buf.hover, "[K] hover lsp")
-				map("<leader>rn", vim.lsp.buf.rename, "[R]e[N]ame")
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				map("<leader>lr", vim.lsp.buf.rename, "[R]ename")
+				map("<leader>lc", vim.lsp.buf.code_action, "[C]ode action")
 			end,
 		})
-
 		vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
 		vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 		vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
