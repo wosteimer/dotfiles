@@ -11,6 +11,7 @@ return {
 				require("luasnip.loaders.from_vscode").lazy_load()
 			end,
 		},
+		"folke/lazydev.nvim",
 	},
 	version = "*",
 
@@ -36,8 +37,11 @@ return {
 			preset = "luasnip",
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
-			providers = { lsp = { async = true } },
+			default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+			providers = {
+				lsp = { async = true },
+				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+			},
 		},
 		signature = { enabled = true },
 	},

@@ -52,3 +52,17 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 eval "$(fzf --zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+
+export TODO="$HOME/Documentos/todo.txt"
+
+function tla(){
+    if [[ $# -eq 0 ]]; then
+        cat $TODO
+    else
+        echo "$(echo $* | md5sum | cut -c 1-4) -> $*" >> $TODO
+    fi
+}
+
+function tlr(){
+    sed -i "/^$*/d" $TODO
+}

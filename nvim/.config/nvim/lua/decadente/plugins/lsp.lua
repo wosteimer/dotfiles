@@ -4,7 +4,16 @@ return {
 		{ "williamboman/mason.nvim", cmd = { "Mason" }, opts = {} },
 		"williamboman/mason-lspconfig.nvim",
 		"saghen/blink.cmp",
-		--"hrsh7th/cmp-nvim-lsp",
+		{ "j-hui/fidget.nvim", opts = {} },
+		{
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = {
+				library = {
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 	},
 	cmd = {
 		"LspLog",
@@ -20,10 +29,6 @@ return {
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 		local servers = {
-			zls = {
-				cmd = { "/home/william/zls" },
-				settings = { preferAstCheckAsChildProcess = false },
-			},
 			pyright = {
 				settings = {
 					pyright = {
@@ -47,8 +52,17 @@ return {
 				},
 			},
 		}
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+		for name, server in pairs(servers) do
+			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			-- require("lspconfig")[server_name].setup(server)
+			vim.lsp.config(name, server)
+		end
 		--require("mason").setup()
 		require("mason-lspconfig").setup({
+			automatic_enable = true,
 			ensure_installed = {
 				"ts_ls",
 				"html",
@@ -58,15 +72,10 @@ return {
 				"ruff",
 				"clangd",
 				"rust_analyzer",
-			},
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
+				"zls",
 			},
 		})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(event)
@@ -81,15 +90,17 @@ return {
 				map("<leader>lc", vim.lsp.buf.code_action, "[C]ode action")
 			end,
 		})
-		vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-		vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-		vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-		vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
-		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-			underline = false,
-			virtual_text = { spacing = 4 },
-			signs = true,
-			update_in_insert = false,
+		local severity = vim.diagnostic.severity
+		vim.diagnostic.config({
+			virtual_text = true,
+			signs = {
+				text = {
+					[severity.ERROR] = "",
+					[severity.WARN] = "",
+					[severity.INFO] = "",
+					[severity.HINT] = "",
+				},
+			},
 		})
 	end,
 }

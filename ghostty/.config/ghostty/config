@@ -1,5 +1,5 @@
 window-decoration = false
-theme = catppuccin-mocha
+theme = light:catppuccin-latte,dark:catppuccin-mocha
 font-family = JetBrains Mono
 font-style = Medium 
 font-style-bold = Bold
@@ -11,3 +11,6 @@ shell-integration-features = no-cursor
 cursor-invert-fg-bg = true
 cursor-style = block
 gtk-single-instance = true
+
+keybind = ctrl+enter=ignore
+

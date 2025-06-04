@@ -18,6 +18,7 @@ return {
 			lsp_fallback = true,
 		},
 		formatters_by_ft = {
+			c = { "clang_format" },
 			zig = { "zigfmt" },
 			python = {
 				"ruff_fix",
@@ -28,6 +29,11 @@ return {
 			lua = { "stylua" },
 			javascript = { "prettier" },
 			markdown = { "prettier" },
+		},
+		formatters = {
+			clang_format = {
+				prepend_args = { "--style=file", "--fallback-style=LLVM" },
+			},
 		},
 	},
 }

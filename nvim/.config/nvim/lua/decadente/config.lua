@@ -1,7 +1,7 @@
 vim.g.python3_host_prog = "$HOME/.config/nvim/.venv/bin/python"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.guicursor = ""
-
+vim.opt.conceallevel = 2
 vim.opt.colorcolumn = { 84 }
 
 vim.opt.number = true

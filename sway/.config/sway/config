@@ -27,6 +27,7 @@ exec cliphist wipe
 exec wl-paste --watch cliphist store
 exec xrandr --output DP-3 --primary
 exec hypridle
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec swayidle -w \
 #          timeout 300 'loginctl lock-session' \
 #          timeout 330 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -48,6 +49,7 @@ set $right l
 set $term ghostty 
 # Your preferred application launcher
 # set $menu j4-dmenu-desktop --dmenu="~/scripts/dmenu.sh --prompt Escolha:" --term-mode=kitty --no-generic 
+#set $menu rofi -show drun -show-icons -icon-theme "Papirus" 
 set $menu ~/workspace/zig/tiny-shell/zig-out/bin/ts-launcher
 set $clipboard cliphist list | ~/scripts/dmenu.sh --prompt Escolha:  | cliphist decode | wl-copy
 
@@ -141,7 +143,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec ~/scripts/power.sh 
+    #bindsym $mod+Shift+e exec ~/scripts/power.sh 
+    bindsym $mod+Shift+e exec rofi -show power -theme power
 #
 # Moving around:
 #
