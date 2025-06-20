@@ -14,70 +14,78 @@ return {
 	cmd = { "Telescope" },
 	keys = {
 		{
-			"<leader>ff",
-			function()
-				require("telescope.builtin").find_files()
-			end,
-			mode = "n",
-			desc = "[F]iles",
-		},
-		{
-			"<leader>fg",
-			function()
-				require("telescope.builtin").live_grep()
-			end,
-			mode = "n",
-			desc = "[G]rep",
-		},
-		{
-			"<leader>fb",
+			"<leader>sb",
 			function()
 				require("telescope.builtin").buffers()
 			end,
 			mode = "n",
-			desc = "[B]uffers",
+			desc = "[F]ind [B]uffers",
 		},
 		{
-			"<leader>fh",
+			"<leader>sm",
+			function()
+				require("telescope.builtin").marks()
+			end,
+			mode = "n",
+			desc = "[F]ind [M]arks",
+		},
+		{
+			"<leader>sf",
+			function()
+				require("telescope.builtin").find_files()
+			end,
+			mode = "n",
+			desc = "[F]ind [F]iles",
+		},
+		{
+			"<leader>sg",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+			mode = "n",
+			desc = "[F]ind [G]rep",
+		},
+		{
+			"<leader>sh",
 			function()
 				require("telescope.builtin").help_tags()
 			end,
 			mode = "n",
-			desc = "[H]elp",
+			desc = "[F]ind [H]elp",
 		},
 		{
-			"<leader>fd",
+			"<leader>sd",
 			function()
 				require("telescope.builtin").diagnostics()
 			end,
 			mode = "n",
-			desc = "[D]iagnostics",
+			desc = "[F]ind [D]iagnostics",
 		},
 		{
-			"<leader>fs",
+			"<leader>ss",
 			function()
 				require("telescope.builtin").spell_suggest()
 			end,
 			mode = "n",
-			desc = "[S]pell suggest",
+			desc = "[F]ind [S]pell suggest",
 		},
 		{
-			"<leader>fw",
+			"<leader>sw",
 			function()
 				local word = vim.fn.expand("<cword>")
 				require("telescope.builtin").grep_string({ search = word })
 			end,
 			mode = "n",
-			desc = "[W]ord",
+			desc = "[F]ind [W]ord",
 		},
 		{
-			"<leader>fW",
+			"<leader>sW",
 			function()
 				local word = vim.fn.expand("<cWORD>")
 				require("telescope.builtin").grep_string({ search = word })
 			end,
 			mode = "n",
-			desc = "[W]ORDS",
+			desc = "[F]ind [W]ORDS",
 		},
 	},
 	config = function()

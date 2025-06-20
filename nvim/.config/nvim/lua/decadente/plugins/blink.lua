@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
-			dependencies = "rafamadriz/friendly-snippets",
+			dependencies = { "rafamadriz/friendly-snippets" },
 			version = "v2.*",
 			build = "make install_jsregexp",
 			config = function()
@@ -14,7 +14,6 @@ return {
 		"folke/lazydev.nvim",
 	},
 	version = "*",
-
 	opts = {
 		completion = {
 			documentation = {

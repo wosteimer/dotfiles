@@ -5,23 +5,23 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<leader>ha",
+			"<leader>a",
 			function()
 				require("harpoon"):list():add()
 			end,
 			mode = "n",
-			desc = "[A]dd file",
+			desc = "[A]dd file to harpoon list",
 		},
 		{
-			"<leader>ht",
+			"<leader><leader>",
 			function()
 				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
 			end,
 			mode = "n",
-			desc = "[T]oggle menu",
+			desc = "Toggle harpoon menu",
 		},
 		{
-			"<leader>h1",
+			"<leader>1",
 			function()
 				require("harpoon"):list():select(1)
 			end,
@@ -29,7 +29,7 @@ return {
 			desc = "Go to file[1]",
 		},
 		{
-			"<leader>h2",
+			"<leader>2",
 			function()
 				require("harpoon"):list():select(2)
 			end,
@@ -37,7 +37,7 @@ return {
 			desc = "Go to file[2]",
 		},
 		{
-			"<leader>h3",
+			"<leader>3",
 			function()
 				require("harpoon"):list():select(3)
 			end,
@@ -45,7 +45,7 @@ return {
 			desc = "Go to file[3]",
 		},
 		{
-			"<leader>h4",
+			"<leader>4",
 			function()
 				require("harpoon"):list():select(4)
 			end,
