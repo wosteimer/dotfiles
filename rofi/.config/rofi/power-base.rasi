@@ -1,0 +1,62 @@
+*{
+    background-color: transparent;
+}
+
+window {
+    width: 1037px;
+    padding: 32px;
+    border-radius: 12px;
+    border: 2px;
+    border-color: @surface0;
+    background-color: @base;
+}
+
+mainbox {
+    children: [message, listview];
+}
+
+listview {
+    layout: horizontal;
+    spacing: 32px;
+}
+
+element {
+    width: 168px;
+    padding: 32px 16px;
+    orientation: vertical;
+}
+
+element.selected {
+    background-color: @blue1;
+    border: 2px;
+    border-color: @blue;
+    border-radius: 12px;
+}
+
+element-icon {
+    size: 64px;
+    padding: 0 0 10px 0;
+}
+
+element-icon {
+    size: 48px;
+    padding: 0 0 10px 0;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    text-color: @text;
+    font: "Adwaita Sans 12";
+}
+
+element-text.selected{
+    text-transform: bold;
+}
+
+textbox {
+    horizontal-align: 0.5;
+    text-color: @text;
+    font: "Adwaita Sans 16";
+    text-transform: bold;
+    padding: 0 0 64px 0;
+}

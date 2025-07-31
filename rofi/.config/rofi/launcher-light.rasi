@@ -1,0 +1,86 @@
+@theme "catppuccin-latte"
+
+*{
+    background-color: transparent;
+}
+
+window {
+    width: 400px;
+    height: 408px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px;
+    border-color: @surface0;
+    background-color: @base;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing: 16px;
+}
+
+icon-search {
+    expand: false;
+    filename: "assets/search-light.svg";
+    size: 16px;
+    vertical-align: 0.5;
+}
+
+inputbar{
+    children: [icon-search, entry];
+    border-radius: 18px;
+    spacing: 24px;
+    border: 2px;
+    padding: 6px 20px;
+    border-color: @blue2;
+    background-color: @surface0;
+}
+
+entry {
+    placeholder: "Buscar...";
+    vertical-align: 0.5;
+    text-color: @text;
+    placeholder-color: @overlay1;
+}
+
+listview {
+    spacing: 8px;
+    scrollbar: true;
+}
+
+scrollbar {
+    border-radius: 4px;
+    background-color: @surface0;
+    handle-color: @overlay0;
+    handle-rounded-corners: true;
+}
+
+element {
+    padding: 20px 12px;
+    spacing: 16px;
+}
+
+element.selected {
+    background-color: @blue1;
+    border: 2px;
+    border-color: @blue;
+    border-radius: 12px;
+}
+
+element-icon {
+    size: 32px;
+}
+
+element-text {
+    text-color: @text;
+    font: "Adwaita Sans 12";
+    vertical-align: 0.5;
+}
+
+textbox {
+    horizontal-align: 0.5;
+    text-color: @text;
+    font: "Adwaita Sans 16";
+    text-transform: bold;
+    padding: 0 0 64px 0;
+}
