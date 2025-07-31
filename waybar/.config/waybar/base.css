@@ -4,11 +4,11 @@ window#waybar {
 }
 
 #tray menu {
-    font-family: Adwaita Sans, sans-serif;
+    font-family: Adwaita Sans, JetBrainsMono Nerd Font Propo;
 }
 
 #workspaces button {
-    font-family: Adwaita Sans, sans-serif;
+    font-family: Adwaita Sans, JetBrainsMono Nerd Font Propo;
     font-size: 13px;
     font-weight: normal;
     padding: 0 8px;
@@ -41,13 +41,13 @@ window#waybar {
 }
 
 #mode {
-    font-family: Adwaita Sans, sans-serif;
+    font-family: Adwaita Sans, JetBrainsMono Nerd Font Propo;
     font-weight: 800;
     color: @peach;
 }
 
 #window {
-    font-family: Adwaita Sans, sans-serif;
+    font-family: Adwaita Sans, JetBrainsMono Nerd Font Propo;
     padding: 0 0 0 16px;
 }
 
@@ -58,7 +58,7 @@ window#waybar {
 #custom-speaker,
 #custom-colors,
 #custom-microphone {
-    font-family: Adwaita Sans, sans-serif;
+    font-family: Adwaita Sans, JetBrainsMono Nerd Font Propo;
     padding: 0 24px 0 0;
     color: @text;
 }

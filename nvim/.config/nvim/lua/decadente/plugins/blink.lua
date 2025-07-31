@@ -20,6 +20,14 @@ return {
 				auto_show = true,
 				auto_show_delay_ms = 500,
 			},
+			menu = {
+				draw = {
+					columns = {
+						{ "label", "label_description", gap = 1 },
+						{ "kind_icon", "kind", gap = 1 },
+					},
+				},
+			},
 		},
 		keymap = {
 			preset = "default",
@@ -27,6 +35,8 @@ return {
 			["<S-Tab>"] = {},
 			["<C-l>"] = { "snippet_forward", "fallback" },
 			["<C-h>"] = { "snippet_backward", "fallback" },
+			["<C-u>"] = { "scroll_documentation_up", "fallback" },
+			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 		},
 		appearance = {
 			use_nvim_cmp_as_default = true,

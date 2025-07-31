@@ -6,6 +6,7 @@ vim.opt.colorcolumn = "84"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = false
@@ -30,24 +31,18 @@ vim.opt.spell = false
 vim.opt.spelllang = { "pt_br", "en_us" }
 
 vim.opt.swapfile = false
---
+
+vim.wo.cursorline = true
+
 -- Auto enable spell checking in markdown files
 local spell_group = vim.api.nvim_create_augroup("spell", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	pattern = { "*.md" },
 	group = spell_group,
 	callback = function()
-		vim.opt.spell = true
+		vim.opt_local.spell = true
 	end,
 })
-vim.api.nvim_create_autocmd({ "BufLeave" }, {
-	pattern = { "*.md" },
-	group = spell_group,
-	callback = function()
-		vim.opt.spell = false
-	end,
-})
-
 -- Highlight when yanking text
 local yank_highlight_group = vim.api.nvim_create_augroup("highlight-yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {

@@ -56,7 +56,22 @@ final_space = true
 
 [[blocks]]
   type = 'rprompt'
-  overflow = 'hidden'
+
+  [[blocks.segments]]
+    type = "zig"
+    style = "plain"
+    foreground = "p:yellow"
+    template = "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+
+  [[blocks.segments]]
+    type = "python"
+    foreground = "p:yellow"
+    template = "  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }}({{ .Venv }}){{ end }}{{ end }} "
+
+  [[blocks.segments]]
+    type = "node"
+    foreground = "p:green"
+    template = "  {{ .Full }} "
 
   [[blocks.segments]]
     template = '{{ div .Ms 1000 }}s'

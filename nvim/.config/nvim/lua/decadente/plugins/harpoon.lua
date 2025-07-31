@@ -13,44 +13,44 @@ return {
 			desc = "[A]dd file to harpoon list",
 		},
 		{
-			"<leader><leader>",
+			"<leader>m",
 			function()
 				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
 			end,
 			mode = "n",
-			desc = "Toggle harpoon menu",
+			desc = "Toggle harpoon [M]enu",
 		},
 		{
-			"<leader>1",
+			"<leader>h",
 			function()
 				require("harpoon"):list():select(1)
 			end,
 			mode = "n",
-			desc = "Go to file[1]",
+			desc = "Go to file 1",
 		},
 		{
-			"<leader>2",
+			"<leader>j",
 			function()
 				require("harpoon"):list():select(2)
 			end,
 			mode = "n",
-			desc = "Go to file[2]",
+			desc = "Go to file 2",
 		},
 		{
-			"<leader>3",
+			"<leader>k",
 			function()
 				require("harpoon"):list():select(3)
 			end,
 			mode = "n",
-			desc = "Go to file[3]",
+			desc = "Go to file 3",
 		},
 		{
-			"<leader>4",
+			"<leader>l",
 			function()
 				require("harpoon"):list():select(4)
 			end,
 			mode = "n",
-			desc = "Go to file[4]",
+			desc = "Go to file 4",
 		},
 
 		-- Toggle previous & next buffers stored within require("Harpoon") list

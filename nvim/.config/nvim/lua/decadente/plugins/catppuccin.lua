@@ -9,6 +9,15 @@ return {
 				light = "latte",
 				dark = "mocha",
 			},
+			custom_highlights = function(colors)
+				return {
+					Folded = { bg = colors.mantle, fg = colors.text },
+					CursorLine = { bg = colors.base },
+					CursorLineNr = { fg = colors.blue, style = { "bold" } },
+					FoldColumn = { fg = colors.surface1 },
+					LineNr = { fg = colors.surface1 },
+				}
+			end,
 			transparent_background = false,
 			show_end_of_buffer = true, -- show the '~' characters after the end of buffers
 			term_colors = false,
@@ -23,17 +32,15 @@ return {
 				comments = { "italic" },
 				conditionals = { "italic" },
 			},
-
+			-- default_integrations = false,
 			integrations = {
-				neogit = true,
-				cmp = true,
 				gitsigns = true,
-				nvimtree = true,
 				telescope = true,
-				lsp_trouble = true,
 				mason = true,
 				treesitter = true,
-				noice = true,
+				blink_cmp = true,
+				notify = true,
+				render_markdown = true,
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
 		})

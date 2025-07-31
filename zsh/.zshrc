@@ -59,7 +59,7 @@ function tla(){
     if [[ $# -eq 0 ]]; then
         cat $TODO
     else
-        echo "$(echo $* | md5sum | cut -c 1-4) -> $*" >> $TODO
+        echo "$(echo $* | uuidgen | cut -c 1-8) -> $*" >> $TODO
     fi
 }
 

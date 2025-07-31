@@ -11,6 +11,8 @@ client.background        $base
 gaps inner 4
 gaps outer 2
 
+font pango:Adwaita Sans Medium 11
+
 default_border pixel 2
 default_floating_border pixel 2
 
@@ -20,7 +22,7 @@ default_floating_border pixel 2
 #
 # Read `man 5 sway` for a complete reference.
 
-exec ~/workspace/zig/tiny-shell/zig-out/bin/ts-launcher --silent
+# exec ~/workspace/zig/tiny-shell/zig-out/bin/ts-launcher --silent
 exec nm-applet
 exec gammastep-indicator
 exec cliphist wipe
@@ -50,7 +52,7 @@ set $term ghostty
 # Your preferred application launcher
 # set $menu j4-dmenu-desktop --dmenu="~/scripts/dmenu.sh --prompt Escolha:" --term-mode=kitty --no-generic 
 #set $menu rofi -show drun -show-icons -icon-theme "Papirus" 
-set $menu ~/workspace/zig/tiny-shell/zig-out/bin/ts-launcher
+set $menu ~/scripts/launcher.sh
 set $clipboard cliphist list | ~/scripts/dmenu.sh --prompt Escolha:  | cliphist decode | wl-copy
 
 ### Output configuration
@@ -144,7 +146,7 @@ input "type:keyboard" {
 
     # Exit sway (logs you out of your Wayland session)
     #bindsym $mod+Shift+e exec ~/scripts/power.sh 
-    bindsym $mod+Shift+e exec rofi -show power -theme power
+    bindsym $mod+Shift+e exec ~/scripts/power.sh
 #
 # Moving around:
 #

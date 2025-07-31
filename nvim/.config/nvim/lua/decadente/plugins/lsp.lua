@@ -42,15 +42,6 @@ return {
 					},
 				},
 			},
-			lua_ls = {
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
-				},
-			},
 		}
 		vim.lsp.config("*", {
 			capabilities = capabilities,
@@ -90,6 +81,15 @@ return {
 				map("grn", vim.lsp.buf.rename, "Re[N]ame")
 				map("gra", vim.lsp.buf.code_action, "code [A]ction")
 				map("K", vim.lsp.buf.hover, "[K] hover lsp")
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				if client == nil then
+					return
+				end
+				if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+					map("<leader>i", function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+					end, "Toggle [I]nlay hints")
+				end
 			end,
 		})
 		local severity = vim.diagnostic.severity

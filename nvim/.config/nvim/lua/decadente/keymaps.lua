@@ -25,8 +25,6 @@ vim.keymap.set({ "n", "i", "v" }, "<right>", "<nop>", { noremap = true })
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-vim.keymap.set("n", "-", ":Ex<CR>", { silent = true, desc = "Open netrw" })
-
 -- Toggle spell checking
 vim.keymap.set("n", "<F3>", function()
 	---@diagnostic disable-next-line: undefined-field
