@@ -1,0 +1,21 @@
+--dependencies
+vim.pack.add({
+	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/christoomey/vim-tmux-navigator",
+})
+
+require("decadente.plugins.catppuccin")
+require("decadente.plugins.lsp")
+require("decadente.plugins.oil")
+require("decadente.plugins.dap")
+require("decadente.plugins.git")
+require("decadente.plugins.harpoon")
+require("decadente.plugins.lualine")
+require("decadente.plugins.treesitter")
+require("decadente.plugins.markdown")
+require("decadente.plugins.mini")
+require("decadente.plugins.todo-comments")
+require("decadente.plugins.trouble")
+require("decadente.plugins.which-key")
+require("decadente.plugins.zen")

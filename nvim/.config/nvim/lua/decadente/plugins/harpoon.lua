@@ -1,74 +1,30 @@
-return {
-	"ThePrimeagen/harpoon",
-	branch = "harpoon2",
-	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = {},
-	keys = {
-		{
-			"<leader>a",
-			function()
-				require("harpoon"):list():add()
-			end,
-			mode = "n",
-			desc = "[A]dd file to harpoon list",
-		},
-		{
-			"<leader>m",
-			function()
-				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-			end,
-			mode = "n",
-			desc = "Toggle harpoon [M]enu",
-		},
-		{
-			"<leader>h",
-			function()
-				require("harpoon"):list():select(1)
-			end,
-			mode = "n",
-			desc = "Go to file 1",
-		},
-		{
-			"<leader>j",
-			function()
-				require("harpoon"):list():select(2)
-			end,
-			mode = "n",
-			desc = "Go to file 2",
-		},
-		{
-			"<leader>k",
-			function()
-				require("harpoon"):list():select(3)
-			end,
-			mode = "n",
-			desc = "Go to file 3",
-		},
-		{
-			"<leader>l",
-			function()
-				require("harpoon"):list():select(4)
-			end,
-			mode = "n",
-			desc = "Go to file 4",
-		},
+vim.pack.add({
+	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
+})
 
-		-- Toggle previous & next buffers stored within require("Harpoon") list
-		{
-			"[h",
-			function()
-				require("harpoon"):list():prev({ ui_nav_wrap = true })
-			end,
-			mode = "n",
-			desc = "jump to previous harpoon file",
-		},
-		{
-			"]h",
-			function()
-				require("harpoon"):list():next({ ui_nav_wrap = true })
-			end,
-			mode = "n",
-			desc = "jump to next harpoon file",
-		},
-	},
-}
+require("harpoon").setup({})
+vim.keymap.set("n", "<leader>a", function()
+	require("harpoon"):list():add()
+end, { desc = "[A]dd file to harpoon list" })
+vim.keymap.set("n", "<leader>m", function()
+	require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+end, { desc = "Toggle harpoon [M]enu" })
+vim.keymap.set("n", "<leader>h", function()
+	require("harpoon"):list():select(1)
+end, { desc = "Go to file 1" })
+vim.keymap.set("n", "<leader>j", function()
+	require("harpoon"):list():select(2)
+end, { desc = "Go to file 2" })
+vim.keymap.set("n", "<leader>k", function()
+	require("harpoon"):list():select(3)
+end, { desc = "Go to file 3" })
+vim.keymap.set("n", "<leader>l", function()
+	require("harpoon"):list():select(4)
+end, { desc = "Go to file 4" })
+-- Toggle previous & next buffers stored within require("Harpoon") list
+vim.keymap.set("n", "[h", function()
+	require("harpoon"):list():prev({ ui_nav_wrap = true })
+end, { desc = "jump to previous harpoon file" })
+vim.keymap.set("n", "]h", function()
+	require("harpoon"):list():next({ ui_nav_wrap = true })
+end, { desc = "jump to next harpoon file" })

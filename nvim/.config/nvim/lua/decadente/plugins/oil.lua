@@ -1,10 +1,7 @@
-return {
-	"stevearc/oil.nvim",
-	lazy = false,
-	opts = {
-		default_file_explorer = true,
-		keymaps = { ["<C-q>"] = "actions.close" },
-	},
-	keys = { { "-", "<CMD>Oil<CR>", mode = "n", desc = "Open parent directory", silent = true } },
-	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-}
+vim.pack.add({ "https://github.com/stevearc/oil.nvim" })
+
+require("oil").setup({
+	default_file_explorer = true,
+	keymaps = { ["<C-q>"] = "actions.close" },
+})
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory", silent = true })

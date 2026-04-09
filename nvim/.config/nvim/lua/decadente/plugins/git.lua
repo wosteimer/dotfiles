@@ -1,77 +1,28 @@
-return {
-	{
-		"tpope/vim-fugitive",
-		keys = {
-			{
-				"<leader>gf",
-				"<cmd>Git<cr>",
-				mode = "n",
-				desc = "Open [F]ugitive",
-			},
-		},
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {},
-		event = { "BufReadPre", "BufNewFile" },
-		cmd = { "Gitsigns" },
-		keys = {
-			{
-				"<leader>gd",
-				function()
-					require("gitsigns").diffthis()
-				end,
-				mode = "n",
-				desc = "[D]iff file",
-			},
-			{
-				"<leader>gs",
-				function()
-					require("gitsigns").stage_hunk()
-				end,
-				mode = "n",
-				desc = "Toggle [S]tage hunk",
-			},
-			{
-				"<leader>gr",
-				function()
-					require("gitsigns").reset_hunk()
-				end,
-				mode = "n",
-				desc = "reset hunk",
-			},
-			{
-				"<leader>gp",
-				function()
-					require("gitsigns").preview_hunk()
-				end,
-				mode = "n",
-				desc = "[P]review hunk",
-			},
-			{
-				"<leader>gb",
-				function()
-					require("gitsigns").toggle_current_line_blame()
-				end,
-				mode = "n",
-				desc = "Toggle current line [B]lame",
-			},
-			{
-				"[g",
-				function()
-					require("gitsigns").nav_hunk("prev")
-				end,
-				mode = "n",
-				desc = "Go previous git hunk",
-			},
-			{
-				"]g",
-				function()
-					require("gitsigns").nav_hunk("next")
-				end,
-				mode = "n",
-				desc = "Go next git hunk",
-			},
-		},
-	},
-}
+vim.pack.add({
+	"https://github.com/tpope/vim-fugitive",
+	"https://github.com/lewis6991/gitsigns.nvim",
+})
+
+require("gitsigns").setup({})
+vim.keymap.set("n", "<leader>gf", "<cmd>Git<cr>", { desc = "Open [F]ugitive" })
+vim.keymap.set("n", "<leader>gd", function()
+	require("gitsigns").diffthis()
+end, { desc = "[D]iff file" })
+vim.keymap.set("n", "<leader>gs", function()
+	require("gitsigns").stage_hunk()
+end, { desc = "Toggle [S]tage hunk" })
+vim.keymap.set("n", "<leader>gr", function()
+	require("gitsigns").reset_hunk()
+end, { desc = "reset hunk" })
+vim.keymap.set("n", "<leader>gp", function()
+	require("gitsigns").preview_hunk()
+end, { desc = "[P]review hunk" })
+vim.keymap.set("n", "<leader>gb", function()
+	require("gitsigns").toggle_current_line_blame()
+end, { desc = "Toggle current line [B]lame" })
+vim.keymap.set("n", "[g", function()
+	require("gitsigns").nav_hunk("prev")
+end, { desc = "Go previous git hunk" })
+vim.keymap.set("n", "]g", function()
+	require("gitsigns").nav_hunk("next")
+end, { desc = "Go next git hunk" })

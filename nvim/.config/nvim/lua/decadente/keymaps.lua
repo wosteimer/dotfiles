@@ -8,6 +8,9 @@ vim.keymap.set("v", "<leader>p", '"_dP', { desc = "[P]aste" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 -- Move selection up/down with shift+j/k
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "move selection down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "move selection up" })
@@ -26,7 +29,10 @@ vim.keymap.set({ "n", "i", "v" }, "<right>", "<nop>", { noremap = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Toggle spell checking
+vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "<F3>", function()
 	---@diagnostic disable-next-line: undefined-field
 	vim.opt.spell = not (vim.opt.spell:get())
 end, { desc = "toggle spell checking" })
+
+vim.keymap.set("n", "<leader>u", "<CMD>Undotree<CR>", { desc = "Toggle [U]ndotree", silent = true })

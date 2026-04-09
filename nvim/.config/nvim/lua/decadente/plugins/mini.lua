@@ -1,5 +1,9 @@
-return {
-	{ "echasnovski/mini.ai", version = false, opts = {} },
-	{ "echasnovski/mini.surround", version = false, opts = {} },
-	{ "echasnovski/mini.pairs", version = false, opts = {} },
-}
+vim.pack.add({
+	"https://github.com/echasnovski/mini.ai",
+	"https://github.com/echasnovski/mini.surround",
+	"https://github.com/echasnovski/mini.pairs",
+})
+
+require("mini.ai").setup({})
+require("mini.surround").setup({})
+require("mini.pairs").setup({})

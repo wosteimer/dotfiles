@@ -1,3 +1,3 @@
-require("decadente.keymaps")
 require("decadente.config")
-require("decadente.lazy")
+require("decadente.keymaps")
+require("decadente.plugins")
