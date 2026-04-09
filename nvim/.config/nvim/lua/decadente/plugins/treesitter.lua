@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 local function init()
-	vim.cmd("syntax off")
 	pcall(vim.treesitter.start)
 	vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 end
