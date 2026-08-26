@@ -1,7 +1,3 @@
-vim.pack.add({
-	"https://github.com/folke/trouble.nvim",
-})
-
 require("trouble").setup({})
 vim.keymap.set("n", "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>", { desc = "[W]orspace Diagnostics" })
 vim.keymap.set("n", "<leader>tb", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "[B]uffer Diagnostics" })

@@ -13,6 +13,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = false
 vim.opt.wrap = false
+vim.opt.linebreak = true
 
 vim.opt.undofile = true
 
@@ -44,6 +45,8 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	pattern = { "*.md" },
 	group = spell_group,
 	callback = function()
+		vim.opt_local.wrap = true
+		vim.o.colorcolumn = "0"
 		vim.opt_local.spell = true
 	end,
 })

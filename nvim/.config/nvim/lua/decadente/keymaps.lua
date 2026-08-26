@@ -29,10 +29,31 @@ vim.keymap.set({ "n", "i", "v" }, "<right>", "<nop>", { noremap = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Toggle spell checking
-vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "<F3>", function()
 	---@diagnostic disable-next-line: undefined-field
 	vim.opt.spell = not (vim.opt.spell:get())
 end, { desc = "toggle spell checking" })
 
 vim.keymap.set("n", "<leader>u", "<CMD>Undotree<CR>", { desc = "Toggle [U]ndotree", silent = true })
+
+vim.keymap.set("n", "<leader>w", function()
+	vim.o.wrap = not vim.o.wrap
+	if vim.o.wrap then
+		vim.o.colorcolumn = "0"
+	else
+		vim.o.colorcolumn = "110"
+	end
+end, { silent = true, desc = "Toggle line [W]rap" })
+
+vim.keymap.set("n", "j", function()
+	if vim.v.count == 0 then
+		return "gj"
+	end
+	return "j"
+end, { expr = true, silent = true })
+vim.keymap.set("n", "k", function()
+	if vim.v.count == 0 then
+		return "gk"
+	end
+	return "k"
+end, { expr = true, silent = true })

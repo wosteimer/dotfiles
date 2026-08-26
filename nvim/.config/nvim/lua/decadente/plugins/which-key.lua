@@ -1,13 +1,10 @@
-vim.pack.add({
-	"https://github.com/folke/which-key.nvim",
-})
-
 require("which-key").setup({
 	delay = 0,
 	win = {
 		height = { min = 4, max = 12 },
 	},
 	spec = {
+		{ "<leader>w", icon = "󰖶" },
 		{ "<leader>z", icon = "" },
 		{ "<leader>h", icon = "󰛢" },
 		{ "<leader>j", icon = "󰛢" },

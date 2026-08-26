@@ -1,8 +1,3 @@
-vim.pack.add({
-	"https://github.com/tpope/vim-fugitive",
-	"https://github.com/lewis6991/gitsigns.nvim",
-})
-
 require("gitsigns").setup({})
 vim.keymap.set("n", "<leader>gf", "<cmd>Git<cr>", { desc = "Open [F]ugitive" })
 vim.keymap.set("n", "<leader>gd", function()

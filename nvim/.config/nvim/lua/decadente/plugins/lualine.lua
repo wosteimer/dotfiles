@@ -1,7 +1,3 @@
-vim.pack.add({
-	"https://github.com/nvim-lualine/lualine.nvim",
-})
-
 local colors = require("catppuccin.palettes").get_palette("mocha")
 local function make_theme(color)
 	return {

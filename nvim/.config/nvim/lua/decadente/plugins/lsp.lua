@@ -1,34 +1,3 @@
-local lsp_config_group = vim.api.nvim_create_augroup("lsp-config", { clear = true })
-vim.api.nvim_create_autocmd("PackChanged", {
-	group = lsp_config_group,
-	callback = function(ev)
-		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == "LuaSnip" and (kind == "install" or kind == "update") then
-			vim.system({ "make", "install_jsregexp" }, { cwd = ev.data.path }):wait()
-		end
-		if name == "blink.cmp" and (kind == "install" or kind == "update") then
-			vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }):wait()
-		end
-		if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
-			vim.system({ "make" }, { cwd = ev.data.path }):wait()
-		end
-	end,
-})
-
-vim.pack.add({
-	"https://github.com/neovim/nvim-lspconfig",
-	"https://github.com/williamboman/mason.nvim",
-	"https://github.com/williamboman/mason-lspconfig.nvim",
-	"https://github.com/saghen/blink.cmp",
-	"https://github.com/j-hui/fidget.nvim",
-	{ src = "https://github.com/L3MON4D3/LuaSnip", version = vim.version.range("2.*") },
-	"https://github.com/rafamadriz/friendly-snippets",
-	"https://github.com/stevearc/conform.nvim",
-	{ src = "https://github.com/nvim-telescope/telescope.nvim", version = "v0.2.1" },
-	"https://github.com/nvim-telescope/telescope-ui-select.nvim",
-	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-})
-
 require("fidget").setup()
 vim.notify = require("fidget.notification").notify
 
@@ -51,11 +20,28 @@ local servers = {
 	lua_ls = {
 		settings = {
 			Lua = {
+				runtime = {
+					version = "LuaJIT",
+				},
+				diagnostics = {
+					globals = {
+						"vim",
+						"require",
+					},
+				},
 				workspace = {
 					library = vim.api.nvim_get_runtime_file("", true),
 				},
+				telemetry = {
+					enable = false,
+				},
 			},
 		},
+	},
+	zls = {
+		settings = { zls = {
+			build_on_save_args = { "-fincremental" },
+		} },
 	},
 }
 
@@ -71,11 +57,14 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_enable = true,
+})
+require("mason-tool-installer").setup({
 	ensure_installed = {
 		"ts_ls",
 		"html",
 		"cssls",
 		"lua_ls",
+		"stylua",
 		"pyright",
 		-- "ty",
 		"ruff",
@@ -144,9 +133,13 @@ require("conform").setup({
 		},
 		go = { "goimports", "gofmt" },
 		lua = { "stylua" },
-		javascript = { "eslint", "prettier" },
-		typescript = { "eslint", "prettier" },
+		javascript = { "prettier", "eslint", stop_after_first = true },
+		typescript = { "prettier", "eslint", stop_after_first = true },
+		javascriptreact = { "prettier", "eslint", stop_after_first = true },
+		typescriptreact = { "prettier", "eslint", stop_after_first = true },
 		markdown = { "prettier" },
+		json = { "prettier" },
+		html = { "prettier" },
 	},
 	formatters = {
 		clang_format = {
@@ -160,7 +153,9 @@ vim.keymap.set({ "n", "v" }, "<leader>f", function()
 end, { desc = "[F]ormat" })
 
 require("luasnip.loaders.from_vscode").lazy_load()
-require("blink.cmp").setup({
+local cmp = require("blink.cmp")
+cmp.build():wait(60000)
+cmp.setup({
 	completion = {
 		documentation = {
 			auto_show = true,

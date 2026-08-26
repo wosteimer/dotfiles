@@ -1,7 +1,3 @@
-vim.pack.add({
-	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
-})
-
 require("harpoon").setup({})
 vim.keymap.set("n", "<leader>a", function()
 	require("harpoon"):list():add()
